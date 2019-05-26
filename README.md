@@ -1,6 +1,6 @@
 # TRICHU-Counter
 
-## An alternative way to play tichu card game 
+## An counter for trichu card game
 
 ## Dependencies
 
