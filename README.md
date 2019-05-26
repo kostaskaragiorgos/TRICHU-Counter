@@ -1,6 +1,6 @@
 # TRICHU-Counter
 
-## An counter for trichu card game
+## A counter for trichu card game
 
 ## Dependencies
 
