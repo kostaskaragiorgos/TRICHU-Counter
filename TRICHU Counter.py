@@ -131,7 +131,6 @@ class TRICHU_Counter():
         with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow([str(player1name),str(player2name),str(player3name),"gamestate"])
-                f.close()
     
     def addr(self):
         if self.gamestate == "Winner":
@@ -184,21 +183,21 @@ class TRICHU_Counter():
             with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
-                f.close()
+                
         elif self.totalscorep2 >= self.finalscore:
             msg.showinfo("WINNER","WINNER PLAYER 2")
             self.gamestate = "Winner"
             with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
-                f.close()
+                
         elif self.totalscorep3 >= self.finalscore:
             msg.showinfo("WINNER","WINNER PLAYER 3")
             self.gamestate = "Winner"
             with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
-                f.close()
+
         
             
             
