@@ -24,3 +24,4 @@
  <li>Every Round(Ctrl + R)</li>
  <li>About(Ctrl + I)</li>
  <li>Help(Ctrl + F1)</li>
+</ul>
