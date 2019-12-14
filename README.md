@@ -8,6 +8,13 @@
   <li> csv (conda install -c anaconda csvkit) </li>
 </ul>
 
+## FILE 
+<ul>
+ <li> TRICHU Counter.py (the main file) </li>
+ <li> tichu win conditions(win conditions check file) </li>
+ <li> TRICHU Counter keybinds.txt (Keybinds file) </li>
+</ul>
+
 **Current Version**
 
 <p><img src ="trichu counter.png" title = "Trichu Counter Version"/> </p>
