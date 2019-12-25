@@ -6,6 +6,7 @@
 
  <ul>
   <li> csv (conda install -c anaconda csvkit) </li>
+  <li> second way to install csv ( pip install python-csv) </li>
 </ul>
 
 ## FILE 
