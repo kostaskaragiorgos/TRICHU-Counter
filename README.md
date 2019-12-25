@@ -9,11 +9,12 @@
   <li> second way to install csv ( pip install python-csv) </li>
 </ul>
 
-## FILE 
+## FILES 
 <ul>
  <li> TRICHU Counter.py (the main file) </li>
  <li> tichu win conditions(win conditions check file) </li>
  <li> TRICHU Counter keybinds.txt (Keybinds file) </li>
+ <li> trichu counter.png (version file) </li>
 </ul>
 
 **Current Version**
