@@ -135,68 +135,68 @@ class TRICHU_Counter():
     def addr(self):
         if self.gamestate == "Winner":
             msg.showinfo("END","THERE IS A WINNER")
-            
-        player1score = simpledialog.askinteger("Player1score","What is the player1score",parent = self.master,minvalue = -2,maxvalue = 4)
-        
-        while player1score == None:
+        else: 
             player1score = simpledialog.askinteger("Player1score","What is the player1score",parent = self.master,minvalue = -2,maxvalue = 4)
-        
-        if player1score >= 2:
-            self.winnerflag = 1
-        else:
-            self.winnerflag = 0
-                
-        if self.winnerflag == 1:
-            player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=1)
-            while player2score == None:
-                player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=1)
-        elif self.winnerflag == 0:
-             player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=4)
-             while player2score == None:
-                 player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=4)
-        if player2score >= 2:
-            self.winnerflag = 1
             
-        if self.winnerflag == 1 and(player2score == 1 or player1score ==1):
-            player3score = simpledialog.askinteger("Player3","What is the player 3 score",parent = self.master,minvalue = -2,maxvalue = 0)
-            while player3score == None:
+            while player1score == None:
+                player1score = simpledialog.askinteger("Player1score","What is the player1score",parent = self.master,minvalue = -2,maxvalue = 4)
+            
+            if player1score >= 2:
+                self.winnerflag = 1
+            else:
+                self.winnerflag = 0
+                    
+            if self.winnerflag == 1:
+                player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=1)
+                while player2score == None:
+                    player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=1)
+            elif self.winnerflag == 0:
+                player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=4)
+                while player2score == None:
+                    player2score = simpledialog.askinteger("Player2score","What is the player2score",parent = self.master,minvalue = -2,maxvalue=4)
+            if player2score >= 2:
+                self.winnerflag = 1
+                
+            if self.winnerflag == 1 and(player2score == 1 or player1score ==1):
                 player3score = simpledialog.askinteger("Player3","What is the player 3 score",parent = self.master,minvalue = -2,maxvalue = 0)
-        elif self.winnerflag == 1 and(player1score == 0 or player2score == 0):
-            player3score = simpledialog.askinteger("Player 3","What is the player 3 score ", parent = self.master,minvalue = -2 ,maxvalue = 1)
-            while player3score == None:
+                while player3score == None:
+                    player3score = simpledialog.askinteger("Player3","What is the player 3 score",parent = self.master,minvalue = -2,maxvalue = 0)
+            elif self.winnerflag == 1 and(player1score == 0 or player2score == 0):
                 player3score = simpledialog.askinteger("Player 3","What is the player 3 score ", parent = self.master,minvalue = -2 ,maxvalue = 1)
-        else:
-            player3score = simpledialog.askinteger("Player 3","What is the player 3 score ", parent = self.master,minvalue = 2 ,maxvalue = 4)
-            while player3score == None:
+                while player3score == None:
+                    player3score = simpledialog.askinteger("Player 3","What is the player 3 score ", parent = self.master,minvalue = -2 ,maxvalue = 1)
+            else:
                 player3score = simpledialog.askinteger("Player 3","What is the player 3 score ", parent = self.master,minvalue = 2 ,maxvalue = 4)
-        with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-            thewriter = csv.writer(f)
-            thewriter.writerow([str(player1score),str(player2score),str(player3score),self.gamestate])
-            f.close()
-        self.totalscorep1 = self.totalscorep1 + player1score 
-        self.totalscorep2 =self.totalscorep2 + player2score
-        self.totalscorep3 =self.totalscorep3 + player3score
-        
-        if self.totalscorep1 >= self.finalscore:
-            msg.showinfo("WINNER","WINNER PLAYER 1")
-            self.gamestate = "Winner"
+                while player3score == None:
+                    player3score = simpledialog.askinteger("Player 3","What is the player 3 score ", parent = self.master,minvalue = 2 ,maxvalue = 4)
             with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
                 thewriter = csv.writer(f)
-                thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
-                
-        elif self.totalscorep2 >= self.finalscore:
-            msg.showinfo("WINNER","WINNER PLAYER 2")
-            self.gamestate = "Winner"
-            with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-                thewriter = csv.writer(f)
-                thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
-                
-        elif self.totalscorep3 >= self.finalscore:
-            msg.showinfo("WINNER","WINNER PLAYER 3")
-            self.gamestate = "Winner"
-            with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-                thewriter = csv.writer(f)
-                thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
+                thewriter.writerow([str(player1score),str(player2score),str(player3score),self.gamestate])
+                f.close()
+            self.totalscorep1 = self.totalscorep1 + player1score 
+            self.totalscorep2 =self.totalscorep2 + player2score
+            self.totalscorep3 =self.totalscorep3 + player3score
+            
+            if self.totalscorep1 >= self.finalscore:
+                msg.showinfo("WINNER","WINNER PLAYER 1")
+                self.gamestate = "Winner"
+                with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
+                    
+            elif self.totalscorep2 >= self.finalscore:
+                msg.showinfo("WINNER","WINNER PLAYER 2")
+                self.gamestate = "Winner"
+                with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
+                    
+            elif self.totalscorep3 >= self.finalscore:
+                msg.showinfo("WINNER","WINNER PLAYER 3")
+                self.gamestate = "Winner"
+                with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow([str(self.totalscorep1),str(self.totalscorep2),str(self.totalscorep3),self.gamestate])
 
         
             
