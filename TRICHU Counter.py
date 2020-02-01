@@ -209,7 +209,7 @@ class TRICHU_Counter():
             self.master.destroy()
     
     def helpmenu(self):
-        msg.showinfo("TRICHU COUNTER HELP","")
+        msg.showinfo("TRICHU COUNTER HELP","A Counter for trichu game. Enter the name of the players and the ending score")
    
     def aboutmenu(self):
         msg.showinfo("TRICHU COUNTER ABOUT","Version 1.0")
