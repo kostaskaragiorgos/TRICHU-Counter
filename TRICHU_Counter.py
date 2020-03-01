@@ -1,12 +1,10 @@
 from tkinter import *
 from tkinter import messagebox as msg
 from tkinter import simpledialog
-
-import pandas as pd
 import random
 import os 
 import csv
-
+import pandas as pd
 class TRICHU_Counter():
     def __init__(self,master):
         self.totalscorep1 = 0
