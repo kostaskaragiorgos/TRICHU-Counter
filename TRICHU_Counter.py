@@ -18,11 +18,8 @@ class TRICHU_Counter():
         self.player1name = ""
         self.player2name = ""
         self.player3name = ""
-        self.totalscorep1 = 0
-        self.totalscorep2 = 0
-        self.totalscorep3 = 0
+        self.totalscores = [0,0,0] #axores of the players
         self.gamestate = "no end"
-        self.winnerflag = 0
         self.filename = ""
         self.master = master
         self.master.title("TRICHU Counter")
@@ -59,7 +56,7 @@ class TRICHU_Counter():
     def everyround(self):
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif self.totalscorep1 == 0 & self.totalscorep2 == 0 & self.totalscorep3 == 0:
+        elif self.totalscores[0] == 0 & self.totalscores[1] == 0 & self.totalscores[2] == 0:
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
@@ -70,32 +67,32 @@ class TRICHU_Counter():
         """ shows player 3 score """
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif self.totalscorep1 == 0 & self.totalscorep2 == 0 & self.totalscorep3 == 0:
+        elif self.totalscores[0] == 0 & self.totalscores[1] == 0 & self.totalscores[2] == 0:
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
         else:
-            msg.showinfo("Player 3 score", str(self.totalscorep3))
+            msg.showinfo("Player 3 score", str(self.totalscores[2]))
     def player2score(self):
         """ shows player 2 score """
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif self.totalscorep1 == 0 & self.totalscorep2 == 0 & self.totalscorep3 == 0:
+        elif self.totalscores[0] == 0 & self.totalscores[1] == 0 & self.totalscores[2] == 0:
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
         else:
-            msg.showinfo("Player 2 score", str(self.totalscorep2))
+            msg.showinfo("Player 2 score", str(self.totalscores[1]))
     def player1score(self):
         """ shows player 1 score """
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif self.totalscorep1 == 0 & self.totalscorep2 == 0 & self.totalscorep3 == 0:
+        elif self.totalscores[0] == 0 & self.totalscores[1] == 0 & self.totalscores[2] == 0:
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
         else:
-            msg.showinfo("Player 1 score", str(self.totalscorep1))
+            msg.showinfo("Player 1 score", str(self.totalscores[0]))
     def loadgame(self):
         pass
     def newgame(self):
@@ -149,28 +146,21 @@ class TRICHU_Counter():
             with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow([str(player1score), str(player2score), str(player3score), self.gamestate])
-                f.close()
-            self.totalscorep1 = self.totalscorep1 + player1score
-            self.totalscorep2 = self.totalscorep2 + player2score
-            self.totalscorep3 = self.totalscorep3 + player3score
-            if self.totalscorep1 >= self.finalscore:
+            self.totalscores[0] += player1score
+            self.totalscores[1] += player2score
+            self.totalscores[2] += player3score
+            if self.totalscores[0] >= self.finalscore:
                 msg.showinfo("WINNER", "WINNER PLAYER 1")
                 self.gamestate = "Winner"
-                with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-                    thewriter = csv.writer(f)
-                    thewriter.writerow([str(self.totalscorep1), str(self.totalscorep2), str(self.totalscorep3), self.gamestate])
-            elif self.totalscorep2 >= self.finalscore:
+            elif self.totalscores[1] >= self.finalscore:
                 msg.showinfo("WINNER", "WINNER PLAYER 2")
                 self.gamestate = "Winner"
-                with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-                    thewriter = csv.writer(f)
-                    thewriter.writerow([str(self.totalscorep1), str(self.totalscorep2), str(self.totalscorep3), self.gamestate])
-            elif self.totalscorep3 >= self.finalscore:
+            elif self.totalscores[2] >= self.finalscore:
                 msg.showinfo("WINNER", "WINNER PLAYER 3")
                 self.gamestate = "Winner"
-                with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-                    thewriter = csv.writer(f)
-                    thewriter.writerow([str(self.totalscorep1), str(self.totalscorep2), str(self.totalscorep3), self.gamestate])
+            with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow([str(self.totalscores[0]), str(self.totalscores[1]), str(self.totalscores[2  ]), self.gamestate])
     def exitmenu(self):
         """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
