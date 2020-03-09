@@ -18,7 +18,7 @@ class TRICHU_Counter():
         self.player1name = ""
         self.player2name = ""
         self.player3name = ""
-        self.totalscores = [0,0,0] #axores of the players
+        self.totalscores = [0,0,0] #scores 
         self.gamestate = "no end"
         self.filename = ""
         self.master = master
