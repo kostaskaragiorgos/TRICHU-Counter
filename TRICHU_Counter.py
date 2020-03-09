@@ -143,9 +143,6 @@ class TRICHU_Counter():
                 player3score = simpledialog.askinteger("Player 3", "What is the player 3 score ", parent=self.master, minvalue=2, maxvalue=4)
                 while player3score is None:
                     player3score = simpledialog.askinteger("Player 3", "What is the player 3 score ", parent=self.master, minvalue=2, maxvalue=4)
-            with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-                thewriter = csv.writer(f)
-                thewriter.writerow([str(player1score), str(player2score), str(player3score), self.gamestate])
             self.totalscores[0] += player1score
             self.totalscores[1] += player2score
             self.totalscores[2] += player3score
