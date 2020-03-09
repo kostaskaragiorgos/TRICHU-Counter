@@ -22,7 +22,6 @@ class TRICHU_Counter():
         self.totalscorep2 = 0
         self.totalscorep3 = 0
         self.gamestate = "no end"
-        self.winnerflag = 0
         self.filename = ""
         self.master = master
         self.master.title("TRICHU Counter")
