@@ -1,6 +1,21 @@
 # TRICHU-Counter
-
 ## A counter for trichu card game
+
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+
+# Table of contents
+
+<!--ts-->
+  * [TRICHU-Counter](#TRICHU-Counter)
+  * [Table of contents](#Table_of_contents)
+  * [Dependencies](#Dependencies)
+  * [FILES](#FILES)
+  * [Current Version](#Current_Version)
+  * [Keybinds](#Keybinds)
+  * [License](#License)
+<!--ts-->
+
 
 ## Dependencies
 
@@ -19,7 +34,7 @@
  <li> trichu counter.png (version file) </li>
 </ul>
 
-**Current Version**
+## Current Version**
 
 <p><img src ="trichu counter.png" title = "Trichu Counter Version"/> </p>
 
@@ -36,3 +51,8 @@
  <li>About(Ctrl + I)</li>
  <li>Help(Ctrl + F1)</li>
 </ul>
+
+
+## License
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+
