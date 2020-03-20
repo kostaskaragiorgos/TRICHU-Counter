@@ -1,5 +1,6 @@
 # TRICHU-Counter
-## A counter for trichu card game
+
+A counter for trichu card game
 
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
@@ -10,7 +11,7 @@
   * [TRICHU-Counter](#TRICHU-Counter)
   * [Table of contents](#Table_of_contents)
   * [Dependencies](#Dependencies)
-  * [FILES](#FILES)
+  * [Files](#Files)
   * [Current Version](#Current_Version)
   * [Keybinds](#Keybinds)
   * [License](#License)
@@ -26,7 +27,8 @@
   <li> second way to install pandas (pip install pandas) </li>
 </ul>
 
-## FILES 
+## Files
+
 <ul>
  <li> TRICHU Counter.py (the main file) </li>
  <li> tichu win conditions(win conditions check file) </li>
