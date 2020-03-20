@@ -15,7 +15,7 @@ def aboutmenu():
 class TRICHU_Counter():
     """ Trichu counter class"""
     def __init__(self, master):
-        self.nameoftheplayers = ["", "", ""]
+        self.nameoftheplayers = ["", "", ""] # names
         self.totalscores = [0, 0, 0] #scores
         self.gamestate = "no end"
         self.filename = ""
