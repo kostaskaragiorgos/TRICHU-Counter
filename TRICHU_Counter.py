@@ -15,10 +15,8 @@ def aboutmenu():
 class TRICHU_Counter():
     """ Trichu counter class"""
     def __init__(self, master):
-        self.player1name = ""
-        self.player2name = ""
-        self.player3name = ""
-        self.totalscores = [0,0,0] #scores 
+        self.nameoftheplayers = ["", "", ""]
+        self.totalscores = [0, 0, 0] #scores
         self.gamestate = "no end"
         self.filename = ""
         self.master = master
@@ -54,6 +52,7 @@ class TRICHU_Counter():
         self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Control-l>', lambda event: self.loadgame())
     def everyround(self):
+        """ shows the score of every round"""
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
         elif self.totalscores[0] == 0 & self.totalscores[1] == 0 & self.totalscores[2] == 0:
@@ -96,15 +95,17 @@ class TRICHU_Counter():
     def loadgame(self):
         pass
     def newgame(self):
+        """ creates a new game"""
         if not os.path.exists("Games"):
             os.mkdir("Games")
-        while self.player1name is None or self.player1name == "":
-            self.player1name = simpledialog.askstring("Player 1 ", "What is your name?", parent=self.master)    
-        while self.player2name is None or self.player2name == "" or self.player2name == self.player1name:
-            self.player2name = simpledialog.askstring("Player 2 ", "What is your name?", parent=self.master)
-        while (self.player3name is None or self.player3name == "" or self.player3name == self.player2name or self.player1name == self.player3name):
-            self.player3name = simpledialog.askstring("Player 3 ", "What is your name?", parent=self.master)
-        self.finalscore = simpledialog.askinteger("Winning Score","What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
+        while self.nameoftheplayers[0] is None or self.nameoftheplayers[0] == "":
+            self.nameoftheplayers[0] = simpledialog.askstring("Player 1 ", "What is your name?", parent=self.master)    
+        while self.nameoftheplayers[1] is None or self.nameoftheplayers[1] == "" or self.nameoftheplayers[1] == self.nameoftheplayers[0]:
+            self.nameoftheplayers[1] = simpledialog.askstring("Player 2 ", "What is your name?", parent=self.master)
+        while (self.nameoftheplayers[2] is None or self.nameoftheplayers[2] == "" or self.nameoftheplayers[2] == self.nameoftheplayers[1] or self.nameoftheplayers[0] == self.nameoftheplayers[2]):
+            self.nameoftheplayers[2] = simpledialog.askstring("Player 3 ", "What is your name?", parent=self.master)
+        self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
+        print(self.nameoftheplayers[0], self.nameoftheplayers[1], self.nameoftheplayers[2])
         while self.finalscore is None:
             self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
         self.addround = Button(self.master, text="Add a round", command=self.addr)
@@ -112,11 +113,12 @@ class TRICHU_Counter():
         self.file_menu.entryconfig("New Game", state="disabled")
         msg.showinfo("Game Created", "Game Created")
         os.chdir("Games")
-        self.filename = self.player1name + str(random.randrange(20, 40))
+        self.filename = self.nameoftheplayers[0] + str(random.randrange(20, 40))
         with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
             thewriter = csv.writer(f)
-            thewriter.writerow([str(self.player1name), str(self.player2name), str(self.player3name), "gamestate"])
+            thewriter.writerow([str(self.nameoftheplayers[0]), str(self.nameoftheplayers[1]), str(self.nameoftheplayers[2]), "gamestate"])
     def addr(self):
+        """ adds a new round"""
         if self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
         else: 
@@ -131,7 +133,7 @@ class TRICHU_Counter():
                 player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=4)
                 while player2score is None:
                     player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=4)
-            if (player2score == 1 or player1score ==1):
+            if (player2score == 1 or player1score == 1):
                 player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=-2, maxvalue=0)
                 while player3score is None:
                     player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=-2, maxvalue=0)
@@ -157,7 +159,7 @@ class TRICHU_Counter():
                 self.gamestate = "Winner"
             with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
                 thewriter = csv.writer(f)
-                thewriter.writerow([str(self.totalscores[0]), str(self.totalscores[1]), str(self.totalscores[2  ]), self.gamestate])
+                thewriter.writerow([str(self.totalscores[0]), str(self.totalscores[1]), str(self.totalscores[2]), self.gamestate])
     def exitmenu(self):
         """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
