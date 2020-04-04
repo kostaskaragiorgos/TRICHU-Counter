@@ -92,22 +92,36 @@ class TRICHU_Counter():
             msg.showinfo("END", "THERE IS A WINNER")
         else:
             msg.showinfo("Player 1 score", str(self.totalscores[0]))
+    def new_game_user_input(self):
+        while self.nameoftheplayers[0] is None or self.nameoftheplayers[0] == "":
+            self.nameoftheplayers[0] = simpledialog.askstring("Player 1 ", "What is your name?", parent=self.master)    
+        while self.nameoftheplayers[1] is None or self.nameoftheplayers[1] == "" :
+            self.nameoftheplayers[1] = simpledialog.askstring("Player 2 ", "What is your name?", parent=self.master)
+        while (self.nameoftheplayers[2] is None or self.nameoftheplayers[2] == ""):
+            self.nameoftheplayers[2] = simpledialog.askstring("Player 3 ", "What is your name?", parent=self.master)
+        self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
+        while self.finalscore is None:
+            self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
+    def checkwinner(self):
+        if self.totalscores[0] >= self.finalscore:
+            msg.showinfo("WINNER", "WINNER PLAYER 1")
+            self.gamestate = "Winner"
+        elif self.totalscores[1] >= self.finalscore:
+            msg.showinfo("WINNER", "WINNER PLAYER 2")
+            self.gamestate = "Winner"
+        elif self.totalscores[2] >= self.finalscore:
+            msg.showinfo("WINNER", "WINNER PLAYER 3")
+            self.gamestate = "Winner"
+        with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
+            thewriter = csv.writer(f)
+            thewriter.writerow([str(self.totalscores[0]), str(self.totalscores[1]), str(self.totalscores[2]), self.gamestate])
     def loadgame(self):
         pass
     def newgame(self):
         """ creates a new game"""
         if not os.path.exists("Games"):
             os.mkdir("Games")
-        while self.nameoftheplayers[0] is None or self.nameoftheplayers[0] == "":
-            self.nameoftheplayers[0] = simpledialog.askstring("Player 1 ", "What is your name?", parent=self.master)    
-        while self.nameoftheplayers[1] is None or self.nameoftheplayers[1] == "" or self.nameoftheplayers[1] == self.nameoftheplayers[0]:
-            self.nameoftheplayers[1] = simpledialog.askstring("Player 2 ", "What is your name?", parent=self.master)
-        while (self.nameoftheplayers[2] is None or self.nameoftheplayers[2] == "" or self.nameoftheplayers[2] == self.nameoftheplayers[1] or self.nameoftheplayers[0] == self.nameoftheplayers[2]):
-            self.nameoftheplayers[2] = simpledialog.askstring("Player 3 ", "What is your name?", parent=self.master)
-        self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
-        print(self.nameoftheplayers[0], self.nameoftheplayers[1], self.nameoftheplayers[2])
-        while self.finalscore is None:
-            self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
+        self.new_game_user_input()
         self.addround = Button(self.master, text="Add a round", command=self.addr)
         self.addround.pack()
         self.file_menu.entryconfig("New Game", state="disabled")
@@ -148,18 +162,7 @@ class TRICHU_Counter():
             self.totalscores[0] += player1score
             self.totalscores[1] += player2score
             self.totalscores[2] += player3score
-            if self.totalscores[0] >= self.finalscore:
-                msg.showinfo("WINNER", "WINNER PLAYER 1")
-                self.gamestate = "Winner"
-            elif self.totalscores[1] >= self.finalscore:
-                msg.showinfo("WINNER", "WINNER PLAYER 2")
-                self.gamestate = "Winner"
-            elif self.totalscores[2] >= self.finalscore:
-                msg.showinfo("WINNER", "WINNER PLAYER 3")
-                self.gamestate = "Winner"
-            with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
-                thewriter = csv.writer(f)
-                thewriter.writerow([str(self.totalscores[0]), str(self.totalscores[1]), str(self.totalscores[2]), self.gamestate])
+            self.checkwinner()
     def exitmenu(self):
         """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
