@@ -103,7 +103,7 @@ class TRICHU_Counter():
         while self.finalscore is None:
             self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
     def checkwinner(self):
-        if all(i >= self.finalscore for i in self.totalscores):
+        if any(i >= self.finalscore for i in self.totalscores):
             self.gamestate = "Winner"
         with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
             thewriter = csv.writer(f)
