@@ -36,9 +36,9 @@ A counter for trichu card game
  <li> trichu counter.png (version file) </li>
 </ul>
 
-## Current Version**
+## Current Version
 
-<p><img src ="trichu counter.png" title = "Trichu Counter Version"/> </p>
+<p><img src ="images/trichu counter.png" title = "Trichu Counter Version"/> </p>
 
 
 ## Keybinds 
