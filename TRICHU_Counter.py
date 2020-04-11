@@ -123,9 +123,9 @@ class TRICHU_Counter():
             msg.showinfo("Player 1 score", str(self.totalscores[0]))
     def new_game_users_names(self):
         for i in range(len(self.nameoftheplayers)):
-            self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i), "What is your name?", parent=self.master)
+            self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i+1), "What is your name?", parent=self.master)
             while self.nameoftheplayers[i] is None:
-                self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i), "What is your name?", parent=self.master) 
+                self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i+1), "What is your name?", parent=self.master) 
 
     def checkwinner(self):
         if any(i >= self.finalscore for i in self.totalscores):
