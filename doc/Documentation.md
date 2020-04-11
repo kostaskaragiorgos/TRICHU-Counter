@@ -4,6 +4,23 @@
 
 ## New Game
 
+You can create a game using menu File --> New Game or using Ctrl+O keybind
+
+<p><img src = "doc images/File menu/new game.png" title="New game">
+
+An ok cancel dialog pops up where you can enter the player's 1 name
+
+
+<p><img src = "doc images/File menu/player one game.png" title="New game"></p>
+
+Player's 2 name
+
+<p><img src = "doc images/File menu/player two game.png" title="New game"></p>
+
+Player's 3 name
+
+<p><img src = "doc images/File menu/player three game.png" title="New game"></p>
+
 ## Exit
 
 You can close the app using menu File --> Exit or using Alt+F4 keybind
