@@ -13,6 +13,7 @@ A counter for trichu card game
   * [Dependencies](#Dependencies)
   * [Files](#Files)
   * [Current Version](#Current_Version)
+  * [Documentation](#Documentation)
   * [Keybinds](#Keybinds)
   * [License](#License)
 <!--ts-->
@@ -27,19 +28,23 @@ A counter for trichu card game
   <li> second way to install pandas (pip install pandas) </li>
 </ul>
 
-## Files
+## Files/Folders
 
 <ul>
+ <li> ./doc (documnetation folder)
+ <li> ./images (images folder)
  <li> TRICHU Counter.py (the main file) </li>
  <li> tichu win conditions(win conditions check file) </li>
  <li> TRICHU Counter keybinds.txt (Keybinds file) </li>
- <li> trichu counter.png (version file) </li>
 </ul>
 
 ## Current Version
 
 <p><img src ="images/trichu counter.png" title = "Trichu Counter Version"/> </p>
 
+## Documentation
+
+All project documentation is located in the `./doc`  folder.
 
 ## Keybinds 
 <ul>
