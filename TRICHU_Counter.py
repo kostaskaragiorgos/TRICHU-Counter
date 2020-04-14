@@ -68,7 +68,7 @@ class TRICHU_Counter():
             while player2score is None:
                 player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=4)
         return player2score
-    def score_of_the_player3(self, player1score,player2score):
+    def score_of_the_player3(self, player1score, player2score):
         """ user input for score of the player 3"""
         if (player2score == 1 or player1score == 1):
             player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=-2, maxvalue=0)
@@ -83,7 +83,7 @@ class TRICHU_Counter():
             while player3score is None:
                 player3score = simpledialog.askinteger("Player 3", "What is the player 3 score ", parent=self.master, minvalue=2, maxvalue=4)
         return  player3score
-    def add_score_to_the_total_score_list(self,score1,score2,score3):
+    def add_score_to_the_total_score_list(self, score1, score2, score3):
         """ adds every score to the total score """
         self.totalscores[0] += score1
         self.totalscores[1] += score2
@@ -167,8 +167,8 @@ class TRICHU_Counter():
         else:
             s1 = self.score_of_the_player1()
             s2 = self.score_of_the_player2(s1)
-            s3 = self.score_of_the_player3(s1,s2)
-            self.add_score_to_the_total_score_list(s1,s2,s3)
+            s3 = self.score_of_the_player3(s1, s2)
+            self.add_score_to_the_total_score_list(s1, s2, s3)
             self.checkwinner()
     def exitmenu(self):
         """ exit menu function """
