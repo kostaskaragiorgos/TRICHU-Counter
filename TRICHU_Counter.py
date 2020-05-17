@@ -75,12 +75,16 @@ class TRICHU_Counter():
         return player3score
     def score_of_the_player3(self, player1score, player2score):
         """ user input for score of the player 3"""
-        if (player2score == 1 or player1score == 1):
-            player3score = self.play3userinput(-2,1)
-        elif (player1score == 0 or player2score == 0):
+        if (player1score == 0 and player2score == 0):
+            player3score = self.play3userinput(2,4)
+        elif(player2score == 2 and player1score ==1):
+            player3score = self.play3userinput(-2,0)
+        elif(player2score == 1 and player1score ==2):
+            player3score = self.play3userinput(-2,0)
+        elif(player1score == 2 or player2score == 2):
             player3score = self.play3userinput(-2,1)
         else:
-            player3score = self.play3userinput(2,4)
+            player3score = self.play3userinput(-2,0)
         return  player3score
     def add_score_to_the_total_score_list(self, score1, score2, score3):
         """ adds every score to the total score """
