@@ -57,16 +57,17 @@ class TRICHU_Counter():
         while player1score is None:
             player1score = simpledialog.askinteger("Player1score", "What is the player1score", parent=self.master, minvalue=-2, maxvalue=4)
         return player1score
+    def player2userinput(self, minvalue, maxvalue):
+        player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
+        while player2score is None:
+            player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
+        return player2score
     def score_of_the_player2(self, player1score):
         """ user input for score of the player 2"""
         if player1score >= 2:
-            player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=1)
-            while player2score is None:
-                player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=1)
+            player2score = self.player2userinput(-2,1)
         else:
-            player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=4)
-            while player2score is None:
-                player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=4)
+            player2score = self.player2userinput(-2,4)
         return player2score
     def play3userinput(self, minvalue, maxvalue):
         player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
