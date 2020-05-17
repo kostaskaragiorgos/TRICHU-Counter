@@ -14,6 +14,11 @@ A counter for trichu card game
   * [Files](#Files)
   * [Current Version](#Current_Version)
   * [Documentation](#Documentation)
+  * [Radon](#Radon)
+    * [Radon cc](#Radon_cc)
+    * [Radon hal](#Radon_hal)
+    * [Radon mi](#Radon_mi)
+    * [Radon raw](#Radon_raw)
   * [Keybinds](#Keybinds)
   * [License](#License)
 <!--ts-->
@@ -45,6 +50,24 @@ A counter for trichu card game
 ## Documentation
 
 All project documentation is located in the `./doc`  folder.
+
+## Radon
+
+### Radon_cc
+
+<p><img src ="images/trichu counter radon cc.png" title = "Trichu Counter Radon cc"/> </p>
+
+### Radon_hal
+
+<p><img src ="images/trichu counter radon hal.png" title = "Trichu Counter Radon hal"/> </p>
+
+### Radon_mi
+
+<p><img src ="images/trichu counter radon mi.png" title = "Trichu Counter Radon mi"/> </p>
+
+### Radon_raw
+
+<p><img src ="images/trichu counter radon raw.png" title = "Trichu Counter Radon raw"/> </p>
 
 ## Keybinds 
 <ul>
