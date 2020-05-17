@@ -92,7 +92,7 @@ class TRICHU_Counter():
         """ shows the score of every round"""
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif all(self.totalscores) == 0:
+        elif all( x == 0 for x in self.totalscores):
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
@@ -103,7 +103,7 @@ class TRICHU_Counter():
         """ shows player 3 score """
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif all(self.totalscores) == 0:
+        elif all( x == 0 for x in self.totalscores):
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
@@ -113,7 +113,7 @@ class TRICHU_Counter():
         """ shows player 2 score """
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif all(self.totalscores) == 0 :
+        elif all( x == 0 for x in self.totalscores):
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
@@ -123,7 +123,7 @@ class TRICHU_Counter():
         """ shows player 1 score """
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif all(self.totalscores) == 0:
+        elif all( x == 0 for x in self.totalscores):
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
