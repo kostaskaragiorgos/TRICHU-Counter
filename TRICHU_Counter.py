@@ -30,9 +30,9 @@ class TRICHU_Counter():
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.scoremenu = Menu(self.menu, tearoff=0)
-        self.scoremenu.add_command(label="Player 1 Total", accelerator='Ctrl+p', command=self.player1score)
-        self.scoremenu.add_command(label="Player 2 Total", accelerator='Ctrl+t', command=self.player2score)
-        self.scoremenu.add_command(label="Player 3 Total", accelerator='Ctrl+j', command=self.player3score)
+        self.scoremenu.add_command(label="Player 1 Total", accelerator='Ctrl+p', command=lambda: self.playerscore(0))
+        self.scoremenu.add_command(label="Player 2 Total", accelerator='Ctrl+t', command=lambda: self.playerscore(1))
+        self.scoremenu.add_command(label="Player 3 Total", accelerator='Ctrl+j', command=lambda: self.playerscore(2))
         self.scoremenu.add_command(label="Every Round", accelerator='Ctrl+R', command=self.everyround)
         self.menu.add_cascade(label="Score", menu=self.scoremenu)
         self.about_menu = Menu(self.menu, tearoff=0)
@@ -43,9 +43,9 @@ class TRICHU_Counter():
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         self.master.config(menu=self.menu)
         self.master.bind('<Control-r>', lambda event: self.everyround())
-        self.master.bind('<Control-p>', lambda event: self.player1score())
-        self.master.bind('<Control-t>', lambda event: self.player2score())
-        self.master.bind('<Control-j>', lambda event: self.player3score())
+        self.master.bind('<Control-p>', lambda event: self.playerscore(0))
+        self.master.bind('<Control-t>', lambda event: self.playerscore(1))
+        self.master.bind('<Control-j>', lambda event: self.playerscore(2))
         self.master.bind('<Control-o>', lambda event: self.newgame())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
@@ -99,8 +99,8 @@ class TRICHU_Counter():
         else:
             df = pd.read_csv('game'+self.filename+'.csv')
             msg.showinfo("SCORE", str(df))
-    def player3score(self):
-        """ shows player 3 score """
+    def playerscore(self, p):
+        """ shows score of a player"""
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
         elif all( x == 0 for x in self.totalscores):
@@ -108,27 +108,7 @@ class TRICHU_Counter():
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
         else:
-            msg.showinfo("Player 3 score", str(self.totalscores[2]))
-    def player2score(self):
-        """ shows player 2 score """
-        if self.filename == "":
-            msg.showerror("ERROR", "No game created")
-        elif all( x == 0 for x in self.totalscores):
-            msg.showinfo("GAMES", "NO GAMES PLAYED")
-        elif self.gamestate == "Winner":
-            msg.showinfo("END", "THERE IS A WINNER")
-        else:
-            msg.showinfo("Player 2 score", str(self.totalscores[1]))
-    def player1score(self):
-        """ shows player 1 score """
-        if self.filename == "":
-            msg.showerror("ERROR", "No game created")
-        elif all( x == 0 for x in self.totalscores):
-            msg.showinfo("GAMES", "NO GAMES PLAYED")
-        elif self.gamestate == "Winner":
-            msg.showinfo("END", "THERE IS A WINNER")
-        else:
-            msg.showinfo("Player 1 score", str(self.totalscores[0]))
+            msg.showinfo("Player"+ str(p) +"score", str(self.totalscores[p]))
     def new_game_users_names(self):
         for i in range(len(self.nameoftheplayers)):
             self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i+1), "What is your name?", parent=self.master)
