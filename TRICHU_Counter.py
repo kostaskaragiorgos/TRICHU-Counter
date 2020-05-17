@@ -68,20 +68,19 @@ class TRICHU_Counter():
             while player2score is None:
                 player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=-2, maxvalue=4)
         return player2score
+    def play3userinput(self, minvalue, maxvalue):
+        player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
+        while player3score is None:
+            player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
+        return player3score
     def score_of_the_player3(self, player1score, player2score):
         """ user input for score of the player 3"""
         if (player2score == 1 or player1score == 1):
-            player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=-2, maxvalue=0)
-            while player3score is None:
-                player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=-2, maxvalue=0)
+            player3score = self.play3userinput(-2,1)
         elif (player1score == 0 or player2score == 0):
-            player3score = simpledialog.askinteger("Player 3", "What is the player 3 score ", parent=self.master, minvalue=-2, maxvalue=1)
-            while player3score is None:
-                player3score = simpledialog.askinteger("Player 3", "What is the player 3 score ", parent=self.master, minvalue=-2, maxvalue=1)
+            player3score = self.play3userinput(-2,1)
         else:
-            player3score = simpledialog.askinteger("Player 3", "What is the player 3 score ", parent=self.master, minvalue=2, maxvalue=4)
-            while player3score is None:
-                player3score = simpledialog.askinteger("Player 3", "What is the player 3 score ", parent=self.master, minvalue=2, maxvalue=4)
+            player3score = self.play3userinput(2,4)
         return  player3score
     def add_score_to_the_total_score_list(self, score1, score2, score3):
         """ adds every score to the total score """
