@@ -115,12 +115,19 @@ class TRICHU_Counter():
             while self.nameoftheplayers[i] is None:
                 self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i+1), "What is your name?", parent=self.master) 
 
-    def checkwinner(self):
-        if any(i >= self.finalscore for i in self.totalscores):
-            self.gamestate = "Winner"
+    def check_winner_file_save(self):
         with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
             thewriter = csv.writer(f)
             thewriter.writerow([str(self.totalscores[0]), str(self.totalscores[1]), str(self.totalscores[2]), self.gamestate])
+    def checkwinner(self):
+        if any(i >= self.finalscore for i in self.totalscores):
+            self.gamestate = "Winner"
+        self.check_winner_file_save()
+        
+    def final_score_user_input(self):
+        self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
+        while self.finalscore is None:
+            self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
     def loadgame(self):
         pass
     def newgame(self):
@@ -128,9 +135,7 @@ class TRICHU_Counter():
         if not os.path.exists("Games"):
             os.mkdir("Games")
         self.new_game_users_names()
-        self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
-        while self.finalscore is None:
-            self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
+        self.final_score_user_input()
         self.addround = Button(self.master, text="Add a round", command=self.addr)
         self.addround.pack()
         self.file_menu.entryconfig("New Game", state="disabled")
