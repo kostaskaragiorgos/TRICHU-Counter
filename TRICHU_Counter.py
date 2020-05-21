@@ -105,8 +105,6 @@ class TRICHU_Counter():
             msg.showerror("ERROR", "No game created")
         elif all( x == 0 for x in self.totalscores):
             msg.showinfo("GAMES", "NO GAMES PLAYED")
-        elif self.gamestate == "Winner":
-            msg.showinfo("END", "THERE IS A WINNER")
         else:
             msg.showinfo("Player"+ str(p) +"score", str(self.totalscores[p]))
     def new_game_users_names(self):
