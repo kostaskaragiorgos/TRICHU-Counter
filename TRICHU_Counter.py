@@ -65,9 +65,9 @@ class TRICHU_Counter():
     def score_of_the_player2(self, player1score):
         """ user input for score of the player 2"""
         if player1score >= 2:
-            player2score = self.player2userinput(-2,1)
+            player2score = self.player2userinput(-2, 1)
         else:
-            player2score = self.player2userinput(-2,4)
+            player2score = self.player2userinput(-2, 4)
         return player2score
     def play3userinput(self, minvalue, maxvalue):
         player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
@@ -77,11 +77,11 @@ class TRICHU_Counter():
     def score_of_the_player3(self, player1score, player2score):
         """ user input for score of the player 3"""
         if (player1score == 0 and player2score == 0):
-            player3score = self.play3userinput(2,4)
+            player3score = self.play3userinput(2, 4)
         elif(player1score > 0 and player2score > 0):
-            player3score = self.play3userinput(-2,0)
+            player3score = self.play3userinput(-2, 0)
         else:
-            player3score = self.play3userinput(-2,1)
+            player3score = self.play3userinput(-2, 1)
         return  player3score
     def add_score_to_the_total_score_list(self, score1, score2, score3):
         """ adds every score to the total score """
