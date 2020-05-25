@@ -26,7 +26,7 @@ class TRICHU_Counter():
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="New Game", accelerator='ctrl+O', command=self.newgame)
-        self.file_menu.add_command(label="Load Game", accelerator='ctrl+l', command=self.loadgame)
+        self.file_menu.add_command(label="Load Game", accelerator='ctrl+l')
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.scoremenu = Menu(self.menu, tearoff=0)
@@ -50,7 +50,6 @@ class TRICHU_Counter():
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-i>', lambda event: aboutmenu())
-        self.master.bind('<Control-l>', lambda event: self.loadgame())
     def score_of_the_player1(self):
         """ user input for score of the player 1"""
         player1score = simpledialog.askinteger("Player1score", "What is the player1score", parent=self.master, minvalue=-2, maxvalue=4)
@@ -58,24 +57,26 @@ class TRICHU_Counter():
             player1score = simpledialog.askinteger("Player1score", "What is the player1score", parent=self.master, minvalue=-2, maxvalue=4)
         return player1score
     def player2userinput(self, minvalue, maxvalue):
+        """ user input for score of the player 2 """
         player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
         while player2score is None:
             player2score = simpledialog.askinteger("Player2score", "What is the player2score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
         return player2score
     def score_of_the_player2(self, player1score):
-        """ user input for score of the player 2"""
+        """ set score of the player 2"""
         if player1score >= 2:
             player2score = self.player2userinput(-2, 1)
         else:
             player2score = self.player2userinput(-2, 4)
         return player2score
     def play3userinput(self, minvalue, maxvalue):
+        """ user input for score of the player 3 """
         player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
         while player3score is None:
             player3score = simpledialog.askinteger("Player3", "What is the player 3 score", parent=self.master, minvalue=minvalue, maxvalue=maxvalue)
         return player3score
     def score_of_the_player3(self, player1score, player2score):
-        """ user input for score of the player 3"""
+        """ set score of the player 3"""
         if (player1score == 0 and player2score == 0):
             player3score = self.play3userinput(2, 4)
         elif(player1score > 0 and player2score > 0):
@@ -92,7 +93,7 @@ class TRICHU_Counter():
         """ shows the score of every round"""
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif all( x == 0 for x in self.totalscores):
+        elif all(x == 0 for x in self.totalscores):
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         elif self.gamestate == "Winner":
             msg.showinfo("END", "THERE IS A WINNER")
@@ -103,31 +104,31 @@ class TRICHU_Counter():
         """ shows score of a player"""
         if self.filename == "":
             msg.showerror("ERROR", "No game created")
-        elif all( x == 0 for x in self.totalscores):
+        elif all(x == 0 for x in self.totalscores):
             msg.showinfo("GAMES", "NO GAMES PLAYED")
         else:
             msg.showinfo("Player"+ str(p) +"score", str(self.totalscores[p]))
     def new_game_users_names(self):
+        """ user input for the names """
         for i in range(len(self.nameoftheplayers)):
             self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i+1), "What is your name?", parent=self.master)
             while self.nameoftheplayers[i] is None:
                 self.nameoftheplayers[i] = simpledialog.askstring("Player"+str(i+1), "What is your name?", parent=self.master) 
-
     def check_winner_file_save(self):
+        """ saves score to a csv file """
         with open('game'+str(self.filename)+str('.csv'), 'a+') as f:
             thewriter = csv.writer(f)
             thewriter.writerow([str(self.totalscores[0]), str(self.totalscores[1]), str(self.totalscores[2]), self.gamestate])
     def checkwinner(self):
+        """ checks for a winner """
         if any(i >= self.finalscore for i in self.totalscores):
             self.gamestate = "Winner"
         self.check_winner_file_save()
-        
     def final_score_user_input(self):
+        """ winning score user input """
         self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
         while self.finalscore is None:
             self.finalscore = simpledialog.askinteger("Winning Score", "What is the winning score?", parent=self.master, minvalue=0, maxvalue=20)
-    def loadgame(self):
-        pass
     def newgame(self):
         """ creates a new game"""
         if not os.path.exists("Games"):
