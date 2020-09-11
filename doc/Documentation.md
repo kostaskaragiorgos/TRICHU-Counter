@@ -108,3 +108,9 @@ else if there is a game but no games played a message pops up
 else total score message pops up
 
 <p><img src = "doc images/Score menu/total score.png" title="Total score"/></p>
+
+# About menu
+
+You can show info about the app by using menu About --> About or using Ctrl+i keybind
+
+<p><img src="doc images/About menu/about menu.png" title="about menu"/></p>
